@@ -1,0 +1,5 @@
+picom
+nitrogen
+playerctl 
+pulseaudio-ctl
+bat
