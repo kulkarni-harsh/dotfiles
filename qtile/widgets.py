@@ -6,6 +6,8 @@ from libqtile import qtile
 from functions import PWA
 import subprocess
 
+
+
 class MyWidgets:
     def __init__(self):
         self.colors = [["#292d3e", "#292d3e"],  # panel background
@@ -45,7 +47,24 @@ class MyWidgets:
             
         def get_dnd_status(): # returns current dunst status
             return '🔴'if subprocess.getoutput("dunstctl is-paused")=='true' else '🟢'
-
+        colors = {
+            "nord_dark_blue_0": "#2E3440",
+            "nord_dark_blue_1": "#3B4252",
+            "nord_dark_blue_2": "#434C5E",
+            "nord_dark_blue_3": "#4C566A",
+            "nord_white_0": "#D8DEE9",
+            "nord_white_1": "#E5E9F0",
+            "nord_white_2": "#ECEFF4",
+            "nord_light_blue_0": "#5E81AC",
+            "nord_light_blue_1": "#81A1C1",
+            "nord_light_blue_2": "#88C0D0",
+            "nord_light_blue_3": "#8FBCBB",
+            "nord_red": "#BF616A",
+            "nord_orange": "#D08770",
+            "nord_yellow": "#EBCB8B",
+            "nord_green": "#A3BE8C",
+            "nord_purple": "#B48EAD",
+            }
         widgets_list = [
             widget.Sep(
                 linewidth=0,
@@ -82,7 +101,7 @@ class MyWidgets:
                 highlight_method='block',
                 urgent_alert_method='block',
                 # urgent_border=self.colors[9],
-                this_current_screen_border=self.colors[9],
+                this_current_screen_border=colors["nord_purple"],
                 this_screen_border=self.colors[4],
                 other_current_screen_border=self.colors[0],
                 other_screen_border=self.colors[0],
@@ -90,13 +109,7 @@ class MyWidgets:
                 background=self.colors[0],
                 disable_drag=True
             ),
-            widget.Prompt(
-                prompt=lazy.spawncmd(),
-                font="Ubuntu Mono",
-                padding=10,
-                foreground=self.colors[3],
-                background=self.colors[1]
-            ),
+            
             widget.Sep(
                 linewidth=0,
                 padding=40,
@@ -113,7 +126,7 @@ class MyWidgets:
                 background=self.colors[0],
                 padding=5
             ),
-
+           
             widget.Battery(
                 charge_char="▲",
                 discharge_char="▼",
@@ -126,39 +139,48 @@ class MyWidgets:
                 update_interval=30,
                 fontsize=18,
                 background=self.colors[0],
-                foreground=self.colors[11],
-            ),
-            widget.Memory(
-                foreground=self.colors[7],
-                background=self.colors[11],
-                mouse_callbacks={'Button1': open_htop},
-                padding=5
+                foreground=colors["nord_white_2"],
             ),
             widget.TextBox(
-                text=' ',
-                background=self.colors[11],
-                foreground=self.colors[10],
+                text="",
+                foreground=colors["nord_white_2"],
+                background=self.colors[0],
+                padding=0,
+                fontsize=18
+            ),
+            widget.Memory(
+                background=colors["nord_white_2"],
+                foreground=colors["nord_dark_blue_3"],
+                mouse_callbacks={'Button1': open_htop},
+                padding=5,
+                fontsize=18
+            ),
+            widget.TextBox(
+                text="",
+                background=colors["nord_white_2"],
+                foreground=colors["nord_dark_blue_2"],
                 padding=0,
                 fontsize=37
             ),
 
             widget.TextBox(
-                text=" 📢 ",
+                text="📢 ",
                 foreground=self.colors[7],
-                background=self.colors[10],
+                background=colors["nord_dark_blue_3"],
                 padding=0,
                 mouse_callbacks={"Button1": open_pavucontrol}
             ),
             widget.Volume(
-                foreground=self.colors[7],
-                background=self.colors[10],
-                update_interval=0.3
+                foreground=colors["nord_white_0"],
+                background=colors["nord_dark_blue_3"],
+                update_interval=0.3,
+                fontsize=18,
             ),
 
             widget.TextBox(
-                text=' ',
-                background=self.colors[10],
-                foreground=self.colors[9],
+                text="",
+                background=colors["nord_dark_blue_3"],
+                foreground=colors["nord_light_blue_0"],
                 padding=0,
                 fontsize=18
             ),
@@ -166,30 +188,39 @@ class MyWidgets:
             widget.CurrentLayoutIcon(
                 custom_icon_paths=[os.path.expanduser(
                     "~/.config/qtile/icons")],
-                foreground=self.colors[0],
-                background=self.colors[9],
+                foreground=colors["nord_green"],
+                background=colors["nord_light_blue_0"],
                 padding=0,
                 scale=0.7
             ),
+            
             widget.CurrentLayout(
-                foreground=self.colors[7],
-                background=self.colors[9],
-                padding=5
+                foreground=colors["nord_white_1"],
+                background=colors["nord_light_blue_0"],
+                padding=5,
+                fontsize=18
             ),
             widget.TextBox(
-                text='⚫',
-                foreground=self.colors[8],
-                background=self.colors[9],
+                text="",
+                foreground=colors["nord_white_2"],
+                background=colors["nord_light_blue_0"],
                 padding=0,
                 fontsize=18
             ),
             widget.Clock(
-                foreground=self.colors[7],
-                background=self.colors[11],
-
+                background=colors["nord_white_2"],
+                foreground=colors["nord_dark_blue_3"],
+                fontsize=18,
                 mouse_callbacks={
                     "Button1": lambda qtile: qtile.cmd_spawn(PWA.calendar())},
-                format="%d %B %Y [ %I:%M:%S ]"
+                format="%d-%m-%Y %a %I:%M %p"
+            ),
+            widget.TextBox(
+                text="",
+                foreground=self.colors[0],
+                background=colors["nord_white_2"],
+                padding=0,
+                fontsize=18
             ),
             
             widget.GenPollText(
@@ -199,9 +230,6 @@ class MyWidgets:
             	mouse_callbacks={'Button1': toggle_dnd},
             
             )
-          
-           
-
         ]
         return widgets_list
 

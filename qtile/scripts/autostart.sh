@@ -14,10 +14,9 @@ function run {
     fi
 }
 
-run picom -CGb &
+run picom --experimental-backend &  
 run nitrogen --restore & 
 run copyq &
-run compton -b &
 run flameshot &
 /usr/lib/kdeconnectd &
 /usr/bin/kdeconnect-indicator &

@@ -47,6 +47,24 @@ if __name__ in ["config", "__main__"]:
     widgets_screen1   = obj_widgets.init_widgets_screen()
 
 
+colors = {
+    "nord_dark_blue_0": "#2E3440",
+    "nord_dark_blue_1": "#3B4252",
+    "nord_dark_blue_2": "#434C5E",
+    "nord_dark_blue_3": "#4C566A",
+    "nord_white_0": "#D8DEE9",
+    "nord_white_1": "#E5E9F0",
+    "nord_white_2": "#ECEFF4",
+    "nord_light_blue_0": "#5E81AC",
+    "nord_light_blue_1": "#81A1C1",
+    "nord_light_blue_2": "#88C0D0",
+    "nord_light_blue_3": "#8FBCBB",
+    "nord_red": "#BF616A",
+    "nord_orange": "#D08770",
+    "nord_yellow": "#EBCB8B",
+    "nord_green": "#A3BE8C",
+    "nord_purple": "#B48EAD",
+}
 
 dgroups_key_binder = None
 
@@ -58,6 +76,11 @@ bring_front_click = True
 
 cursor_warp = False
 
+widget_defaults = dict(
+    font="JetBrainsMono Nerd Font Mono",
+    fontsize=14,
+    padding=3,
+)
 
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -83,7 +106,7 @@ reconfigure_screens = True
 respect_minimize_requests = True
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
-wmname = "LG3D"
+# wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def start_once():

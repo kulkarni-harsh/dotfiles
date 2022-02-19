@@ -24,8 +24,8 @@ from os.path import expanduser
 HOME = expanduser("~")
 
 # Define constants here
-TERMINAL = "gnome-terminal"
-
+#TERMINAL = "gnome-terminal"
+TERMINAL = "kitty"
 
 # Basic window manager movements
 
@@ -70,7 +70,7 @@ APPS = [
     ([MOD, ALT], "c", "code"),
     ([MOD, ALT], "p", "pycharm"),
     ([MOD, ALT], "a", "pavucontrol"),
-    ([MOD, ALT], "e", "sudo gedit /home/harshkulkarni/.config/qtile/config.py"),
+    ([MOD, ALT], "e", "gedit /home/harsh/.config/qtile/config.py"),
     ([MOD, ALT], "z", "zoom"),
 
     # Media hotkeys
@@ -86,7 +86,7 @@ APPS = [
     # Screenshots
     ([],         "Print", "flameshot gui"),
     # Full screen screenshot
-    ([ALT],      "Print", "xfce4-screenshooter -f -c"),
+    ([ALT],      "Print", "flameshot -f -c"),
 
     # Terminal apps
     ([MOD, ALT], "n", TERMINAL),
