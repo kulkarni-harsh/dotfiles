@@ -109,7 +109,7 @@ class MyWidgets:
                 background=self.colors[0],
                 disable_drag=True
             ),
-            
+    
             widget.Sep(
                 linewidth=0,
                 padding=40,

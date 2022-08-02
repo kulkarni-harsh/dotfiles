@@ -54,8 +54,8 @@ HARDWARE_KEYS = [
     ([], "XF86AudioMute", "pactl set-sink-mute @DEFAULT_SINK@ toggle"),
      
     # Brightness
-    ([], "XF86MonBrightnessUp", "brightnessctl set +2%"),
-    ([], "XF86MonBrightnessDown", "brightnessctl set 2%-"),
+    ([], "XF86MonBrightnessUp", "brightnessctl set +1%"),
+    ([], "XF86MonBrightnessDown", "brightnessctl set 1%-"),
 ]
 
 
